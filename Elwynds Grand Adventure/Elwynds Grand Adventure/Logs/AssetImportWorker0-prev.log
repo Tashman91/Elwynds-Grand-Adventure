@@ -584,3 +584,4 @@ Received Import Request.
 Start importing Assets/Tilesets/Palettes/Tileset one.prefab using Guid(4312a0d88879bd44d811477155464106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8eb5d40e09e867e63687e536163fe85') in 0.043344 seconds 
   Import took 0.046485 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
