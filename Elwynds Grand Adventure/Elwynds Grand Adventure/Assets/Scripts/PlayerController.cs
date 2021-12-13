@@ -6,38 +6,45 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float moveSpeed;
-
-    public Rigidbody2D rB;
-
-    Vector2 movement;
-
-    public bool grounded;
-    public LayerMask whatIsGround;
-    public Transform groundCheck;
-    public float groundCheckRadious;
-
-
-    void Start()
-    {
-       
-    }
+    public float moveSpeed = 5f;
 
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadious, whatIsGround);
-
-        if(grounded == true)
-        {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
-        }
-      
+        MovementControls();
     }
 
+    void MovementControls() 
+    {
+        float moveX = 0f;
+        float moveY = 0f;
+
+
+        if (Input.GetKey(KeyCode.W)) 
+        {
+            moveY =  +1f;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            moveY = -1f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveX = +1f;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveX = -1f;
+        }
+
+        Vector3 moveDir = new Vector3(moveX, moveY).normalized;
+
+        transform.position += moveDir * moveSpeed * Time.fixedDeltaTime;
+
+    }
+    
     void FixedUpdate()
     {
-        rB.MovePosition(rB.position * movement * moveSpeed * Time.fixedDeltaTime);
+        
     }
 }
